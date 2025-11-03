@@ -11,10 +11,6 @@ router.get('/', experienciaController.obtenerExperiencias);
 // Obtener una experiencia por ID
 router.get('/:id', experienciaController.obtenerExperiencia);
 
-// Actualizar una experiencia
-router.put('/:id', experienciaController.actualizarExperiencia);
 
-// Eliminar una experiencia
-router.delete('/:id', experienciaController.eliminarExperiencia);
 
 module.exports = router;
