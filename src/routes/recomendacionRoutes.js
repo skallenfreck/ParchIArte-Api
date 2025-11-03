@@ -8,6 +8,10 @@ router.post('/', recomendacionController.crearRecomendacion);
 // Obtener todas las recomendaciones
 router.get('/', recomendacionController.obtenerRecomendaciones);
 
+// Obtener una recomendación por ID
+router.get('/:id', recomendacionController.obtenerRecomendacion);
 
+// Eliminar una recomendación por ID
+router.delete('/:id', recomendacionController.eliminarRecomendacion);
 
 module.exports = router;
