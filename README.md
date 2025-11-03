@@ -19,3 +19,18 @@ ParchIArte, una plataforma que centraliza la oferta de entretenimiento, permitie
 5. Inicia el servidor de desarrollo:
     npm start
 
+# 📘 Módulo de Experiencias y Recomendaciones - ParchIArte API
+
+Este módulo pertenece al proyecto **ParchIArte**, una API desarrollada en **Node.js** y **Express**, que gestiona información relacionada con experiencias culturales y recomendaciones en la ciudad.  
+Esta parte del desarrollo fue implementada por **Camilo Prieto**.
+
+---
+
+## ⚙️ Tecnologías utilizadas
+- **Node.js** - entorno de ejecución
+- **Express.js** - framework para la API REST
+- **Jest + Supertest** - pruebas de integración
+- **MongoDB (Mongoose)** - base de datos NoSQL
+- **dotenv** - manejo de variables de entorno
+
+---
