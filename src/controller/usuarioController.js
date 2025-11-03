@@ -34,3 +34,31 @@ const obtenerUsuario = async (req, res) => {
         res.status(500).json({ mensaje: 'Error al obtener el usuario', error });
     }
 };
+
+// Actualizar un usuario
+const actualizarUsuario = async (req, res) => {
+    try {
+        const usuario = await Usuario.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!usuario) {
+            return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+        }
+        res.status(200).json(usuario);
+    } catch (error) {
+        res.status(500).json({ mensaje: 'Error al actualizar el usuario', error });
+    }
+};
+
+// Eliminar un usuario
+const eliminarUsuario = async (req, res) => {
+    try {
+        const usuario = await Usuario.findByIdAndDelete(req.params.id);
+        if (!usuario) {
+            return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+        }
+        res.status(200).json({ mensaje: 'Usuario eliminado con éxito' });
+    } catch (error) {
+        res.status(500).json({ mensaje: 'Error al eliminar el usuario', error });
+    }
+};
+
+module.exports = { crearUsuario, obtenerUsuarios, obtenerUsuario, actualizarUsuario, eliminarUsuario };
