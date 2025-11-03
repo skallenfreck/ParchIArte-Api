@@ -34,3 +34,47 @@ Esta parte del desarrollo fue implementada por **Camilo Prieto**.
 - **dotenv** - manejo de variables de entorno
 
 ---
+## Características
+
+Gestión de Usuarios: CRUD completo con historial de reservas
+Experiencias Culturales: Catálogo de actividades con información detallada
+Sistema de Reservas: Reserva y cancelación de experiencias
+Recomendaciones IA: Sugerencias personalizadas basadas en preferencias
+Aliados Estratégicos: Registro y gestión de proveedores culturales
+API RESTful: Endpoints bien documentados y estructurados
+---
+## Estructura
+ParchIArte-Api/
+│
+├── src/
+│   ├── controllers/          # Lógica de negocio
+│   │   ├── usuarioController.js
+│   │   ├── experienciaController.js
+│   │   ├── reservaController.js
+│   │   ├── recomendacionController.js
+│   │   └── aliadoController.js
+│   │
+│   ├── models/               # Modelos de datos (Mongoose)
+│   │   ├── usuarioModel.js
+│   │   ├── experienciaModel.js
+│   │   ├── reservaModel.js
+│   │   ├── recomendacionModel.js
+│   │   └── aliadoModel.js
+│   │
+│   ├── routes/               # Definición de rutas
+│   │   ├── usuarioRoutes.js
+│   │   ├── experienciaRoutes.js
+│   │   ├── reservaRoutes.js
+│   │   ├── recomendacionRoutes.js
+│   │   └── aliadoRoutes.js
+│   │
+│   ├── index.js              # Centralización de rutas
+│   └── server.js             # Punto de entrada principal
+│
+├── tests/                    # Pruebas unitarias e integración
+├── .env                      # Variables de entorno (no versionado)
+├── .gitignore
+├── package.json
+└── README.md
+Este proyecto fue desarrollado como parte de la asignatura Base de Datos en la Fundación Universitaria Konrad Lorenz.
+La API forma parte del ecosistema de la aplicación ParchIArte, enfocada en impulsar la cultura y el entretenimiento digital en Bogotá. 🌃
