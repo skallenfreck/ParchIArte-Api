@@ -11,6 +11,9 @@ router.get('/', recomendacionController.obtenerRecomendaciones);
 // Obtener una recomendación por ID
 router.get('/:id', recomendacionController.obtenerRecomendacion);
 
+// Actualizar una recomendación por ID
+router.put('/:id', recomendacionController.actualizarRecomendacion);
+
 // Eliminar una recomendación por ID
 router.delete('/:id', recomendacionController.eliminarRecomendacion);
 

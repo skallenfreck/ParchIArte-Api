@@ -40,6 +40,29 @@ const obtenerRecomendacion = async (req, res) => {
     }
 };
 
+// Actualizar una recomendación por ID
+const actualizarRecomendacion = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const actualizaciones = req.body;
+
+        const recomendacionActualizada = await Recomendacion.findByIdAndUpdate(
+            id,
+            actualizaciones,
+            { new: true } // ← devuelve la versión actualizada
+        ).populate('usuario actividadRecomendada');
+
+        if (!recomendacionActualizada) {
+            return res.status(404).json({ mensaje: 'Recomendación no encontrada' });
+        }
+
+        res.status(200).json(recomendacionActualizada);
+    } catch (error) {
+        res.status(500).json({ mensaje: 'Error al actualizar la recomendación', error });
+    }
+};
+
+
 // Eliminar una recomendación por ID
 const eliminarRecomendacion = async (req, res) => {
     try {
@@ -57,5 +80,7 @@ module.exports = {
     crearRecomendacion,
     obtenerRecomendaciones,
     obtenerRecomendacion,
-    eliminarRecomendacion
+    eliminarRecomendacion,
+    actualizarRecomendacion
 };
+
