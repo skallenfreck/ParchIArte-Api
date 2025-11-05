@@ -11,6 +11,9 @@ router.get('/', reservaController.obtenerReservas);
 // Obtener una reserva por ID
 router.get('/:id', reservaController.obtenerReserva);
 
+// Modificar una reserva
+router.put('/:id', reservaController.modificarReserva);  // Ruta PUT para modificar una reserva
+
 // Eliminar una reserva
 router.delete('/:id', reservaController.eliminarReserva);
 
