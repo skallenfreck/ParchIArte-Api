@@ -25,6 +25,40 @@ const crearReserva = async (req, res) => {
 };
 
 /**
+ * Modifica una reserva existente
+ * @route PUT /api/reservas/:id
+ * @param {string} req.params.id - ID de la reserva a modificar
+ * @param {Object} req.body - Nuevos datos para la reserva
+ * @returns {Object} 200 - Reserva modificada
+ * @returns {Object} 404 - Reserva no encontrada
+ * @returns {Object} 500 - Error del servidor
+ */
+const modificarReserva = async (req, res) => {
+    try {
+        // Extraer el ID de la reserva de los parámetros y los nuevos datos del cuerpo
+        const { usuarioId, experienciaId, fechaReserva } = req.body;
+        
+        // Buscar la reserva por ID y actualizarla con los nuevos datos
+        const reservaActualizada = await Reserva.findByIdAndUpdate(
+            req.params.id, 
+            { usuario: usuarioId, experiencia: experienciaId, fechaReserva }, 
+            { new: true }  // Devuelve la reserva modificada
+        );
+
+        // Verificar si la reserva fue encontrada y modificada
+        if (!reservaActualizada) {
+            return res.status(404).json({ mensaje: 'Reserva no encontrada' });
+        }
+
+        // Responder con la reserva actualizada
+        res.status(200).json(reservaActualizada);
+    } catch (error) {
+        // Manejar errores de base de datos
+        res.status(500).json({ mensaje: 'Error al modificar la reserva', error });
+    }
+};
+
+/**
  * Obtiene todas las reservas del sistema con información completa
  * @route GET /api/reservas
  * @returns {Array} 200 - Lista de todas las reservas con datos de usuario y experiencia
@@ -92,4 +126,4 @@ const eliminarReserva = async (req, res) => {
 };
 
 // Exportar funciones del controlador para usar en las rutas
-module.exports = { crearReserva, obtenerReservas, obtenerReserva, eliminarReserva };
+module.exports = { crearReserva, obtenerReservas, obtenerReserva, eliminarReserva, modificarReserva };
