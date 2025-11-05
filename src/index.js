@@ -1,27 +1,36 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const dotenv = require('dotenv');
+const parser = require("body-parser");
+const express = require("express");
 const app = express();
+const port = 3000;
+const cors = require("cors");
 
-// Cargar variables de entorno
-dotenv.config();
+// Importar las rutas de cada recurso
+const usuarioRoutes = require("./routes/usuarioRoute");
+const reservaRoutes = require("./routes/reservaRoute");
+const experienciaRoutes = require("./routes/experienciaRoute");
+const aliadoRoutes = require("./routes/aliadoRoute");
+const recomendacionRoutes = require("./routes/recomendacionRoutes");
 
-// Conectar a la base de datos
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log("Conexión a MongoDB Atlas exitosa"))
-    .catch(err => console.log("Error al conectar a MongoDB Atlas", err));
+const mongoose = require("mongoose");
 
-// Middlewares
-app.use(express.json()); // Para poder leer datos en formato JSON
-app.use(cors()); // Habilitar CORS para solicitudes de diferentes orígenes
+require("dotenv").config();
 
-// Importar y usar las rutas desde index.js
-const routes = require('./index'); // Importar las rutas centralizadas desde src/index.js
-app.use('/api', routes); // Usar el router de las rutas bajo el prefijo /api
+app.use(cors());
+app.use(parser.urlencoded({ extended: false }));
+app.use(parser.json());
 
-// Puerto de escucha
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
+// Usar las rutas
+app.use("/api/usuarios", usuarioRoutes);
+app.use("/api/reservas", reservaRoutes);
+app.use("/api/experiencias", experienciaRoutes);
+app.use("/api/aliados", aliadoRoutes);
+app.use("/api/recomendaciones", recomendacionRoutes);
+
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => console.log("Conexión exitosa a MongoDB Atlas"))
+  .catch((error) => console.log("Error de conexión:", error));
+
+app.listen(port, () => {
+  console.log(`Servidor corriendo en el puerto ${port}`);
 });

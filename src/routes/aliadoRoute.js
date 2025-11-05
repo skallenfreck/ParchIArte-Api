@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const aliadoController = require('../controllers/aliadoController');
+const aliadoController = require('../controller/aliadoController');
 
 // Crear un nuevo aliado
 router.post('/', aliadoController.crearAliado);

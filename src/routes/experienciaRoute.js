@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const experienciaController = require('../controllers/experienciaController');
+const experienciaController = require('../controller/experienciaController');
 
 // Crear una nueva experiencia
 router.post('/', experienciaController.crearExperiencia);

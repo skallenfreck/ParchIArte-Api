@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const recomendacionController = require('../controllers/recomendacionController');
+const recomendacionController = require('../controller/recomendacionController');
 
 // Crear una nueva recomendación
 router.post('/', recomendacionController.crearRecomendacion);

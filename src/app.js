@@ -21,7 +21,7 @@ const routes = require('./index'); // Importar las rutas centralizadas desde src
 app.use('/api', routes); // Usar el router de las rutas bajo el prefijo /api
 
 // Puerto de escucha
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
