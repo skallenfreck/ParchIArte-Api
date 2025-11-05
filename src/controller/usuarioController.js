@@ -1,3 +1,5 @@
+const Usuario = require('../models/usuarioModel');
+
 const crearUsuario = async (req, res) => {
     try {
         // Extraer datos del cuerpo de la petición
